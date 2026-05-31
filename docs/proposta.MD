@@ -4,7 +4,7 @@ Este projeto consiste em um jogo inspirado em Space Invaders (Nave desviando de 
 
 ## 1. Nome provisório do jogo
 
->>>>>>>>>Meteor Rain
+>Meteor Rain
 
 ## 2. Integrantes do grupo
 
@@ -111,4 +111,5 @@ Melhorias possíveis:
 
 - Melhoria 1: Diferentes naves;
 - Melhoria 2: Aumento de dificuldade;
-- Melhoria 3: Animações
+- Melhoria 3: Animações;
+- Melhoria 4: Disparos pela nave.

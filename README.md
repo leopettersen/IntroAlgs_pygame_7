@@ -1,6 +1,6 @@
 # Nome do Jogo
 
->>>>>>>>>Meteor Rain
+>Meteor Rain
 
 ## Integrantes do grupo
 
