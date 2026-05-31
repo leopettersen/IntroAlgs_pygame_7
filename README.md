@@ -1,15 +1,13 @@
 # Nome do Jogo
 
-Projeto final da disciplina de Introdução a Algoritmos/Programação, desenvolvido com Python e Pygame.
-
-Este repositório é um template para os grupos da disciplina. A proposta é começar com uma base funcional e evoluir o jogo ao longo do semestre.
+>>>>>>>>>NOME DO JOGO AQUI<<<<<<<<<
 
 ## Integrantes do grupo
 
-- Nome do integrante 1
-- Nome do integrante 2
-- Nome do integrante 3
-- Nome do integrante 4
+- Daniel
+- Leonardo
+- Rafael Ferreira Torres Modesto
+- Samuel Henrique Alvarenga e Lopes
 
 ## Estrutura do projeto
 
@@ -22,43 +20,23 @@ Este repositório é um template para os grupos da disciplina. A proposta é com
 
 ## Descrição do jogo
 
-Descreva brevemente a ideia principal do jogo.
-
-Exemplo:
-
-> O jogo consiste em controlar um personagem que deve coletar moedas e evitar obstáculos. O jogador ganha pontos ao coletar itens e perde vidas ao colidir com obstáculos. A partida termina quando o tempo acaba ou quando o jogador perde todas as vidas.
+Este projeto consiste em um jogo inspirado em Space Invaders (Nave desviando de meteoros), desenvolvido utilizando a biblioteca Pygame e programação procedural (sem orientação a objetos). O jogador controla uma nave espacial na parte inferior da tela e deve eliminar ondas de inimigos que descem em direção à sua posição.
 
 ## Objetivo do jogador
 
-Explique o que o jogador precisa fazer para vencer ou avançar no jogo.
-
-Exemplo:
-
-> O objetivo é coletar a maior quantidade possível de itens antes que o tempo acabe, evitando colisões com os obstáculos.
+O objetivo do jogador é desviar do maior número possível de meteoros, evitando que os meteoros alcancem sua posição. Conforme o jogo avança, o desafio aumenta devido à movimentação e à quantidade de meteoros na tela.
 
 ## Regras do jogo
 
-Liste as principais regras do jogo.
-
-Exemplo:
-
-- O jogador se movimenta usando as setas do teclado.
-- Cada item coletado aumenta a pontuação.
-- Colidir com um obstáculo reduz a quantidade de vidas.
-- A partida termina quando o jogador perde todas as vidas ou quando o tempo acaba.
+O jogador controla uma nave espacial localizada na parte inferior da tela.
+Os meteoros se movimentam verticalmente pela tela e descem gradualmente.
+Cada meteoro desviado aumenta a pontuação do jogador.
+O jogo termina quando um inimigo alcança a nave do jogador.
 
 ## Controles
 
-Informe as teclas ou comandos utilizados no jogo.
-
-Exemplo:
-
-- Seta para cima: mover para cima
-- Seta para baixo: mover para baixo
-- Seta para esquerda: mover para esquerda
-- Seta para direita: mover para direita
-- Espaço: realizar ação
-- ESC: sair do jogo
+Seta para esquerda: mover a nave para a esquerda
+Seta para direita: mover a nave para a direita
 
 ## Como executar o projeto
 
