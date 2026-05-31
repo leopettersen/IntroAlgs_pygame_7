@@ -1,11 +1,11 @@
 # Nome do Jogo
 
->>>>>>>>>NOME DO JOGO AQUI<<<<<<<<<
+>>>>>>>>>Meteor Rain
 
 ## Integrantes do grupo
 
-- Daniel
-- Leonardo
+- Daniel Gomes Rolando
+- Leonardo Federici Pettersen
 - Rafael Ferreira Torres Modesto
 - Samuel Henrique Alvarenga e Lopes
 

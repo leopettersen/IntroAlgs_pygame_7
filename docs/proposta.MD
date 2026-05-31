@@ -4,14 +4,14 @@ Este projeto consiste em um jogo inspirado em Space Invaders (Nave desviando de 
 
 ## 1. Nome provisório do jogo
 
->>>>>>>>>NOME DO JOGO AQUI<<<<<<<<<
+>>>>>>>>>Meteor Rain
 
 ## 2. Integrantes do grupo
 
 Liste os integrantes do grupo.
 
-- Nome 1: Daniel
-- Nome 2: leonardo
+- Nome 1: Daniel Gomes Rolando
+- Nome 2: Leonardo Federici Pettersen
 - Nome 3: Rafael Ferreira Torres Modesto 
 - Nome 4: Samuel Henrique Alvarenga e Lopes
 
@@ -66,9 +66,7 @@ Descrição:
 
 ## Pontuação, vidas, tempo ou progresso
 
-Exemplo:
-
-> O jogador começa com 3 vidas e ganha pontos a medida que sobrevive e o tempo passa.
+> O jogador começa com 3 vidas, a cada meteoro que o atinge ele perde uma, a pontuação é crecente com o tempo de sobrevivência.
 
 ## 10. Controles previstos
 
@@ -77,93 +75,40 @@ Seta para direita: mover a nave para a direita
 
 ## 11. Organização inicial do código
 
-Explique como o grupo pretende organizar o código.
-
-Exemplo:
-
-- `main.py`: inicia o jogo;
-- `src/jogo.py`: contém o loop principal;
-- `src/config.py`: guarda configurações como tamanho da tela e cores;
-- `src/funcoes.py`: contém funções auxiliares;
-- `src/dados.py`: contém funções de leitura e escrita de arquivos.
-
 Organização planejada:
 
-> Escreva aqui.
-
+> - `main.py`: inicia o jogo;
+> - `src/jogo.py`: contém o loop principal;
+> - `src/config.py`: guarda configurações como tamanho da tela e cores;
+> - `src/funcoes.py`: contém funções auxiliares;
+> - `src/dados.py`: contém funções de leitura e escrita de arquivos.
 
 ## 12. Recursos externos previstos
 
-Informe se o grupo pretende utilizar imagens, sons, fontes, tutoriais ou códigos externos.
-
-Exemplo:
-
-- imagens obtidas de banco gratuito;
-- sons gratuitos;
-- tutorial usado apenas como referência;
-- fonte personalizada.
-
 Recursos previstos:
 
-> Escreva aqui.
-
-Caso não pretenda utilizar recursos externos, escreva:
-
-> Não pretendemos utilizar recursos externos.
+> - imagens obtidas de banco gratuito;
+> - sons gratuitos;
+> - fontes personalizadas
 
 ## 13. Principais dificuldades esperadas
 
-Liste as dificuldades que o grupo acredita que poderá enfrentar.
-
-Exemplos:
-
-- movimentação do jogador;
-- colisão entre objetos;
-- controle de tempo;
-- criação do ranking;
-- organização do código;
-- uso do GitHub;
-- testes;
-- exibição de textos na tela.
-
 Dificuldades previstas:
 
-- Dificuldade 1:
-- Dificuldade 2:
-- Dificuldade 3:
+- Dificuldade 1: Colisão entre objetos;
+- Dificuldade 2: Controle de tempo;
+- Dificuldade 3: Criação do ranking
 
 ## 14. Escopo mínimo para a entrega final
 
-Descreva qual será a versão mínima aceitável do jogo.
-
-Esta seção é importante para evitar que o grupo escolha uma ideia grande demais.
-
-Exemplo:
-
-> A versão mínima do jogo terá um personagem controlado pelo teclado, obstáculos aparecendo na tela, sistema de vidas, sistema de pontuação e tela de fim de jogo.
-
 Escopo mínimo:
 
-> Escreva aqui.
+> A versão mínima do jogo terá uma nave que se movimenta lateralmente pelo teclado, meteoros descendo a tela, sistema de vidas, ranking de maior pontuação e tela de Game Over.
 
 ## 15. Possíveis melhorias, caso haja tempo
 
-Liste funcionalidades extras que o grupo poderá implementar se conseguir concluir o escopo mínimo.
-
-Exemplos:
-
-- tela inicial;
-- sons;
-- fases;
-- aumento de dificuldade;
-- ranking;
-- animações;
-- novos tipos de obstáculos;
-- diferentes personagens;
-- menu de pausa.
-
 Melhorias possíveis:
 
-- Melhoria 1:
-- Melhoria 2:
-- Melhoria 3:
+- Melhoria 1: Diferentes naves;
+- Melhoria 2: Aumento de dificuldade;
+- Melhoria 3: Animações
