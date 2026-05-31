@@ -31,7 +31,7 @@ O objetivo do jogador é desviar do maior número possível de meteoros, evitand
 O jogador controla uma nave espacial localizada na parte inferior da tela.
 Os meteoros se movimentam verticalmente pela tela e descem gradualmente.
 Cada meteoro desviado aumenta a pontuação do jogador.
-O jogo termina quando um inimigo alcança a nave do jogador.
+Cada colisão entre a nave e um meteoro faz o jogador perder uma vida. Depois de perder 3 vidas se encerra a partida.
 
 ## Controles
 

@@ -1,196 +1,79 @@
 # Proposta Inicial do Jogo
 
-Este documento deve ser preenchido pelo grupo na Semana 1 do projeto.
-
-A proposta deve apresentar uma ideia simples, clara e viável para ser desenvolvida com Python e Pygame dentro do prazo disponível.
+Este projeto consiste em um jogo inspirado em Space Invaders (Nave desviando de meteoros), desenvolvido utilizando a biblioteca Pygame e programação procedural (sem orientação a objetos). O jogador controla uma nave espacial na parte inferior da tela e deve eliminar ondas de inimigos que descem em direção à sua posição.
 
 ## 1. Nome provisório do jogo
 
-Escreva aqui o nome provisório do jogo.
-
-Exemplo:
-
-> Corrida dos Obstáculos
+>>>>>>>>>NOME DO JOGO AQUI<<<<<<<<<
 
 ## 2. Integrantes do grupo
 
 Liste os integrantes do grupo.
 
-- Nome 1:
-- Nome 2:
-- Nome 3:
-- Nome 4:
+- Nome 1: Daniel
+- Nome 2: leonardo
+- Nome 3: Rafael Ferreira Torres Modesto 
+- Nome 4: Samuel Henrique Alvarenga e Lopes
 
 ## 3. Tipo de jogo
 
-Indique o tipo de jogo que será desenvolvido.
-
-Exemplos:
-
-- jogo de desviar de obstáculos;
-- jogo de coleta de itens;
-- labirinto simples;
-- jogo de perguntas e respostas;
-- jogo de memória;
-- Pong;
-- Snake;
-- Breakout;
-- nave desviando de meteoros;
-- corrida simples com obstáculos;
-- jogo de clique rápido;
-- jogo de sobrevivência simples.
-
-Tipo escolhido pelo grupo:
-
-> Escreva aqui.
+> Tipo escolhido pelo grupo: Nave desviando de meteoros
 
 ## 4. Descrição geral do jogo
 
-Explique, em poucas linhas, como o jogo funcionará.
-
-Procure responder:
-
-- O que aparece na tela?
-- O que o jogador controla?
-- O que o jogador precisa fazer?
-- Quais desafios aparecem durante a partida?
-
-Descrição:
-
-> Escreva aqui.
+> Na tela aparecem a nave do jogador, meteoros caindo do espaço e a pontuação ou tempo de sobrevivência. O jogador controla uma nave espacial localizada na parte inferior da tela, podendo movê-la para a esquerda e para a direita. O objetivo é sobreviver o maior tempo possível desviando dos meteoros que surgem continuamente na tela. Conforme o tempo passa, novos meteoros aparecem, aumentando a dificuldade da partida. O principal desafio é evitar colisões com os meteoros, utilizando reflexos rápidos e movimentação precisa. O jogo termina quando um meteoro atinge a nave do jogador.
 
 ## 5. Objetivo do jogador
 
-Explique qual é o objetivo principal do jogador.
-
-Exemplos:
-
-- coletar o maior número possível de itens;
-- sobreviver pelo maior tempo possível;
-- chegar até o final do labirinto;
-- acertar alvos;
-- responder perguntas corretamente;
-- evitar obstáculos;
-- quebrar todos os blocos.
-
-Objetivo:
-
-> Escreva aqui.
+> Sobreviver pelo maior tempo possível desviando dos meteoros que caem em direção à nave. A cada segundo sobrevivido, a pontuação aumenta, e o jogador deve evitar colisões para continuar na partida.
 
 ## 6. Regras principais
 
-Liste as principais regras do jogo.
-
-Exemplo:
-
-- O jogador começa com 3 vidas.
-- Cada moeda coletada vale 10 pontos.
-- Cada colisão com obstáculo remove 1 vida.
-- A partida termina quando as vidas chegam a zero.
-- O jogador vence se alcançar 100 pontos.
-
-Regras do grupo:
-
-- Regra 1:
-- Regra 2:
-- Regra 3:
-- Regra 4:
-- Regra 5:
+Regra 1: O jogador controla uma nave que pode se mover apenas para a esquerda e para a direita.
+Regra 2: Meteoros caem continuamente do topo da tela em direção à nave.
+Regra 3: O jogador ganha pontos ou tempo de sobrevivência enquanto permanece vivo.
+Regra 4: Cada colisão entre a nave e um meteoro faz o jogador perder uma vida. Depois de perder 3 vidas se encerra a partida.
+Regra 5: O objetivo é sobreviver o máximo de tempo possível e alcançar a maior pontuação.
 
 ## 7. Condição de vitória
 
-Explique como o jogador vence ou conclui o jogo.
-
-Exemplos:
-
-- atingir determinada pontuação;
-- chegar ao final da fase;
-- sobreviver até o tempo acabar;
-- responder uma quantidade mínima de perguntas;
-- quebrar todos os blocos.
-
-Condição de vitória:
-
-> Escreva aqui.
+> A condição de vitória consiste em sobreviver o maior tempo possível, mesma mecânica do jogo Spacce Invaders, o qual você não avança para uma tela de vitória definitiva, mas progride através de um ciclo infinito de desafios.
 
 ## 8. Condição de derrota ou encerramento
 
-Explique como o jogador perde ou quando a partida termina.
-
-Exemplos:
-
-- perder todas as vidas;
-- acabar o tempo;
-- colidir com determinado obstáculo;
-- errar muitas perguntas;
-- deixar a bola cair, no caso de Breakout ou Pong.
-
-Condição de derrota ou encerramento:
-
-> Escreva aqui.
+> O jogador deve evitar ser atingido por um meteoro. Cada colisão entre a nave e um meteoro faz o jogador perder uma vida. Depois de perder 3 vidas se encerra a partida.
 
 ## 9. Elementos previstos no jogo
 
-Descreva os principais elementos que farão parte do jogo.
+Meteoro: Elementos que caem verticalmente e têm como objetivo atigir o jogador.
+Nave: Representa o jogador. Deve mover-se no eixo x para desviar dos meteoros.
 
 ## Jogador ou elemento principal
 
-Exemplo:
-
-> Um personagem controlado pelas setas do teclado.
+> A nave
 
 Descrição:
 
-> Escreva aqui.
+> Deve mover-se no eixo x para desviar dos meteoros
 
 ## Obstáculos, inimigos ou desafios
 
-Exemplo:
-
-> Obstáculos aparecem em posições aleatórias e devem ser evitados.
-
-Descrição:
-
-> Escreva aqui.
+> Obstáculos (meteoros) aparecem em posições aleatórias e devem ser evitados.
 
 ## Itens, alvos ou objetos de interação
 
-Exemplo:
-
-> Moedas aparecem na tela e aumentam a pontuação quando coletadas.
-
-Descrição:
-
-> Escreva aqui.
+> As interações acontecem quando um meteoro colide com a nave do jogador ou quando o meteoro chega ao fim da tela, o renderizando novamente em uma posição aleatória.
 
 ## Pontuação, vidas, tempo ou progresso
 
 Exemplo:
 
-> O jogador começa com 3 vidas e ganha 10 pontos por item coletado.
-
-Descrição:
-
-> Escreva aqui.
+> O jogador começa com 3 vidas e ganha pontos a medida que sobrevive e o tempo passa.
 
 ## 10. Controles previstos
 
-Informe os comandos que serão utilizados pelo jogador.
-
-Exemplo:
-
-- Seta para cima: mover para cima
-- Seta para baixo: mover para baixo
-- Seta para esquerda: mover para esquerda
-- Seta para direita: mover para direita
-- Espaço: realizar ação
-- ESC: sair do jogo
-
-Controles do grupo:
-
-- Tecla/comando:
-- Tecla/comando:
-- Tecla/comando:
+Seta para esquerda: mover a nave para a esquerda
+Seta para direita: mover a nave para a direita
 
 ## 11. Organização inicial do código
 
