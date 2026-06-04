@@ -1,4 +1,4 @@
-from src.funcoes import calcular_pontos, jogador_perdeu, limitar_valor
+from src.funcoesJogo import calcular_pontos, jogador_perdeu, limitar_valor
 
 
 def test_calcular_pontos():

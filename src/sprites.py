@@ -1,10 +1,10 @@
 import pygame
             
-def pegar_sprite(local_arquivo, x, y, width, height, scale=1):
+def pegar_sprite(local_arquivo, x, y,  width, height, scale=1):
     """Corta um único elemento de uma spritesheet BMP e remove o fundo."""
     
     # 1. Carrega o BMP e usa .convert() (sem alpha) para otimizar a velocidade
-    sheet = pygame.image.load(local_arquivo).convert()
+    sheet = pygame.image.load(local_arquivo)
 
     # 2. Cria uma superfície padrão para o recorte (não precisa de SRCALPHA aqui)
     image = pygame.Surface((width, height))
