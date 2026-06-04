@@ -25,6 +25,7 @@ def limitar_valor(valor, minimo, maximo):
 
 
 def verificar_colisao(nave, meteoro, screen):
+    """Verifica se a nave colidiu com um meteoro e reposiciona o meteoro se houver colisão."""
     if nave.colliderect(meteoro['rect']):
         redefinir_posicao(meteoro, screen)
         return True

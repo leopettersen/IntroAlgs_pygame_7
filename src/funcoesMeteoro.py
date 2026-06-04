@@ -25,14 +25,16 @@ meteoros = [{
     "rect": meteoro_image5.get_rect(topleft=(50, -1500))
 }]
 
-def mover_meteoros(screen, dt):
+def mover_meteoros(screen, dt, vel_meteoro):
+    """Move os meteoros para baixo e os reposiciona quando saem da tela."""
     for meteoro in meteoros:
         if not meteoro['rect'].y > screen.height: 
-            meteoro['rect'].y += 350 * dt
+            meteoro['rect'].y += vel_meteoro * dt
         else: 
             redefinir_posicao(meteoro, screen)
         #if meteoro.colliderect(nave): print("das")
 
 def redefinir_posicao(meteoro, screen):
+    """Reposiciona o meteoro para o topo da tela em uma posição horizontal aleatória."""
     meteoro['rect'].y = -meteoro['rect'].height
     meteoro['rect'].x = random.randint(0, screen.width - meteoro['rect'].width)

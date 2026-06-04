@@ -8,6 +8,7 @@ nave = {
         }
 
 def mover_nave(dt):
+    """Move a nave para a esquerda ou direita com base na entrada do jogador."""
     keys = pygame.key.get_pressed()
     if keys[pygame.K_a]:
         if not nave['rect'].x < 0: 
