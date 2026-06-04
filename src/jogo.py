@@ -4,9 +4,10 @@ def executar_jogo():
     from src.funcoesNave import mover_nave, nave
     from src.funcoesMeteoro import mover_meteoros, meteoros
     from src.funcoesJogo import verificar_colisao, tomar_dano, jogador_perdeu, calcular_pontos
+    from src.dados import carregar_recorde, salvar_recorde
 
     #CONFIGURAÇÕES DO JOGO----------------------------------------------------
-    from src.config import FPS, LARGURA_TELA, ALTURA_TELA, TITULO_JOGO
+    from src.config import FPS, LARGURA_TELA, ALTURA_TELA, TITULO_JOGO, CAMINHO_RECORDE
     pygame.init()
     screen = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
     from src.sprites import pegar_sprite
@@ -17,6 +18,7 @@ def executar_jogo():
     vida_atual = 3
     pontos_atual = 0
     vel_meteoro = 350
+    recorde = carregar_recorde(CAMINHO_RECORDE)
     #-----------------------------------------
 
 
@@ -43,10 +45,13 @@ def executar_jogo():
                     running = False
         
         pontos_atual = calcular_pontos(pontos_atual, dt * 5)
+        if pontos_atual > recorde:
+            recorde = pontos_atual
+            salvar_recorde(CAMINHO_RECORDE, recorde)
         vel_meteoro += dt * 2
 
         pygame.display.set_caption(
-            f"{TITULO_JOGO} | Vidas: {vida_atual} | Pontos: {int(pontos_atual)} "
+            f"{TITULO_JOGO} | Vidas: {vida_atual} | Pontos: {int(pontos_atual)} | Recorde: {int(recorde)}"
         )
 
         pygame.display.flip()

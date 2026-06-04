@@ -3,7 +3,7 @@ LARGURA_TELA = 800
 ALTURA_TELA = 600
 FPS = 60
 
-TITULO_JOGO = "Projeto Final - Pygame"
+TITULO_JOGO = "Meteor Rain - Pygame"
 
 BRANCO = (255, 255, 255)
 PRETO = (0, 0, 0)
