@@ -3,7 +3,7 @@ def executar_jogo():
 
     from src.funcoesNave import mover_nave, nave
     from src.funcoesMeteoro import mover_meteoros, meteoros
-    from src.funcoesJogo import verificar_colisao
+    from src.funcoesJogo import verificar_colisao, tomar_dano, jogador_perdeu
 
     #CONFIGURAÇÕES DO JOGO----------------------------------------------------
     from src.config import FPS, LARGURA_TELA, ALTURA_TELA, TITULO_JOGO
@@ -12,6 +12,7 @@ def executar_jogo():
     pygame.display.set_caption(TITULO_JOGO)
     clock = pygame.time.Clock()
     running = True
+    vida_atual = 3
     #-----------------------------------------
 
 
@@ -30,8 +31,16 @@ def executar_jogo():
         mover_meteoros(screen, dt)
         mover_nave(dt);
         for meteoro in meteoros:
-            pygame.draw.rect(screen, (255, 0, 0), meteoro)
-            verificar_colisao(nave['rect'], meteoro, screen)
+            screen.blit(meteoro['sprite'], meteoro['rect'])
+            if verificar_colisao(nave['rect'], meteoro, screen):
+                vida_atual = tomar_dano(vida_atual, 1)
+                if jogador_perdeu(vida_atual):
+                    print("Game Over!")
+                    running = False
+        
+        pygame.display.set_caption(
+            f"{TITULO_JOGO} | Vidas: {vida_atual}"
+        )
 
         pygame.display.flip()
         clock.tick(FPS)  
