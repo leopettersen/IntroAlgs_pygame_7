@@ -2,11 +2,11 @@ import pygame
 import random
 from src.sprites import pegar_sprite
 
-meteoro_image1 = pegar_sprite("assets/imagens/meteoro.png", 0, 0, 80, 80, 2)
-meteoro_image2 = pegar_sprite("assets/imagens/meteoro.png", 0, 0, 80, 80, 1.5)
-meteoro_image3 = pegar_sprite("assets/imagens/meteoro.png", 0, 0, 80, 80, 1.2)
-meteoro_image4 = pegar_sprite("assets/imagens/meteoro.png", 0, 0, 80, 80, 1.0)
-meteoro_image5 = pegar_sprite("assets/imagens/meteoro.png", 0, 0, 80, 80, 0.8)
+meteoro_image1 = pegar_sprite("assets/imagens/meteoro.png", 0, 0, 38, 33, 2)
+meteoro_image2 = pegar_sprite("assets/imagens/meteoro.png", 0, 0, 38, 33, 1.5)
+meteoro_image3 = pegar_sprite("assets/imagens/meteoro.png", 0, 0, 38, 33, 1.2)
+meteoro_image4 = pegar_sprite("assets/imagens/meteoro.png", 0, 0, 38, 33, 1.0)
+meteoro_image5 = pegar_sprite("assets/imagens/meteoro.png", 0, 0, 38, 33, 0.8)
 
 meteoros = [{
     "sprite": meteoro_image1,
@@ -31,7 +31,6 @@ def mover_meteoros(screen, dt):
             meteoro['rect'].y += 350 * dt
         else: 
             redefinir_posicao(meteoro, screen)
-        #if meteoro.colliderect(nave): print("das")
 
 def redefinir_posicao(meteoro, screen):
     meteoro['rect'].y = -meteoro['rect'].height
