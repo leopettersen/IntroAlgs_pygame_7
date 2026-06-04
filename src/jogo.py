@@ -9,6 +9,8 @@ def executar_jogo():
     from src.config import FPS, LARGURA_TELA, ALTURA_TELA, TITULO_JOGO
     pygame.init()
     screen = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
+    from src.sprites import pegar_sprite
+    fundo = pegar_sprite("assets/imagens/fundo.png", 0, 0, 100, 100, 9)
     pygame.display.set_caption(TITULO_JOGO)
     clock = pygame.time.Clock()
     running = True
@@ -26,7 +28,7 @@ def executar_jogo():
             if event.type == pygame.QUIT:
                 running = False
 
-        screen.fill("purple")
+        screen.blit(fundo)
 
         screen.blit(nave['sprite'], nave['rect'])
 

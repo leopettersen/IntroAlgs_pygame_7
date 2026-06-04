@@ -1,7 +1,7 @@
 import pygame
 
 from src.sprites import pegar_sprite
-nave_image = pegar_sprite("assets/imagens/nave.png", 0, 0, 496, 423, 0.15)
+nave_image = pegar_sprite("assets/imagens/nave.png", 0, 0, 496, 423, 0.135)
 nave = {
             "sprite": nave_image,
             "rect": nave_image.get_rect(topleft = (295, 400)) 
