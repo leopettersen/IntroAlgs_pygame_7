@@ -3,7 +3,7 @@ def executar_jogo():
 
     from src.funcoesNave import mover_nave, nave
     from src.funcoesMeteoro import mover_meteoros, desenha_explosao, meteoros
-    from src.funcoesJogo import verificar_colisao, tomar_dano, jogador_perdeu
+    from src.funcoesJogo import verificar_colisao, tomar_dano, jogador_perdeu, calcular_pontos
     from src.dados import carregar_recorde, salvar_recorde
 
     #CONFIGURAÇÕES DO JOGO----------------------------------------------------
@@ -35,6 +35,8 @@ def executar_jogo():
 
         mover_meteoros(screen, dt)
         mover_nave(dt);
+        pontos_atual = calcular_pontos(pontos_atual, dt * 5)
+
         for meteoro in meteoros:
             if meteoro['explodindo']:
                 desenha_explosao(screen, meteoro)
