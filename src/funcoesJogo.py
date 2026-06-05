@@ -1,4 +1,4 @@
-from src.funcoesMeteoro import redefinir_posicao
+from src.funcoesMeteoro import redefinir_posicao, desenha_explosao
 
 def calcular_pontos(pontos_atual, pontos_ganhos):
     """Soma os pontos ganhos à pontuação atual."""
@@ -26,8 +26,10 @@ def limitar_valor(valor, minimo, maximo):
 
 def verificar_colisao(nave, meteoro, screen):
     """Verifica se a nave colidiu com um meteoro e reposiciona o meteoro se houver colisão."""
+    if meteoro['explodindo']:
+        return False
     if nave.colliderect(meteoro['rect']):
-        redefinir_posicao(meteoro, screen)
+        meteoro['explodindo'] = True
+        desenha_explosao(screen, meteoro)
         return True
     return False
-        #tomar_dano(3, 0)
