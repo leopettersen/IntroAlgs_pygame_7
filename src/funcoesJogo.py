@@ -1,5 +1,3 @@
-from src.funcoesMeteoro import redefinir_posicao, desenha_explosao
-
 def calcular_pontos(pontos_atual, pontos_ganhos):
     """Soma os pontos ganhos à pontuação atual."""
     return pontos_atual + pontos_ganhos
@@ -30,6 +28,5 @@ def verificar_colisao(nave, meteoro, screen):
         return False
     if nave.colliderect(meteoro['rect']):
         meteoro['explodindo'] = True
-        desenha_explosao(screen, meteoro)
         return True
     return False

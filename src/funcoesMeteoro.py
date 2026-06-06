@@ -1,5 +1,6 @@
 import random
 from src.sprites import pegar_sprite
+from src.funcoesJogo import calcular_pontos
 
 meteoro1_image = pegar_sprite("assets/imagens/meteoro.png", 0, 0, 38, 33, 1.5)
 meteoro2_image = pegar_sprite("assets/imagens/meteoro.png", 0, 0, 38, 33, 1.5)
@@ -50,22 +51,24 @@ meteoros = [{
     "explodindo": False,
     "frame_explosao": 0
 }]
+
 vel_meteoro = 350
 
-def mover_meteoros(screen, dt):
+def mover_meteoros(screen, dt, meteoro):
     """Move os meteoros para baixo e os reposiciona quando saem da tela."""
-    for meteoro in meteoros:
-        if meteoro['explodindo']:
-            meteoro['frame_explosao'] += 1
-            if meteoro['frame_explosao'] >= len(frames_explosao):
-                meteoro['explodindo'] = False
-                meteoro['frame_explosao'] = 0
-                redefinir_posicao(meteoro, screen)
-        
-        elif not meteoro['rect'].y > screen.height: 
-            meteoro['rect'].y += vel_meteoro * dt
-        else: 
+    if meteoro['explodindo']:
+        meteoro['frame_explosao'] += 1
+        if meteoro['frame_explosao'] >= len(frames_explosao):
+            meteoro['explodindo'] = False
+            meteoro['frame_explosao'] = 0
             redefinir_posicao(meteoro, screen)
+    
+    elif not meteoro['rect'].y > screen.height: 
+        meteoro['rect'].y += vel_meteoro * dt
+    else: 
+        redefinir_posicao(meteoro, screen)
+        return 1
+    return 0
 
 def redefinir_posicao(meteoro, screen):
     """Reposiciona o meteoro para o topo da tela em uma posição horizontal aleatória."""

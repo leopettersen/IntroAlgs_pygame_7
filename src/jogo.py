@@ -34,11 +34,11 @@ def executar_jogo():
 
         screen.blit(nave['sprite'], nave['rect'])
 
-        mover_meteoros(screen, dt)
-        mover_nave(dt);
-        pontos_atual = calcular_pontos(pontos_atual, dt * 5)
-
+        mover_nave(dt)
+        
+        meteoros_passados = 0
         for meteoro in meteoros:
+            meteoros_passados += mover_meteoros(screen, dt, meteoro)
             if meteoro['explodindo']:
                 desenha_explosao(screen, meteoro)
             else:
@@ -52,6 +52,7 @@ def executar_jogo():
                         salvar_recorde(CAMINHO_RECORDE, recorde)
                     print("Game Over!")
                     running = False
+        pontos_atual = calcular_pontos(pontos_atual, meteoros_passados)
 
         pygame.display.set_caption(
             f"{TITULO_JOGO} | Vidas: {vida_atual} | Pontos: {int(pontos_atual)} | Recorde: {int(recorde)}"
