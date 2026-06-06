@@ -7,7 +7,7 @@ def executar_jogo():
     from src.dados import carregar_recorde, salvar_recorde
 
     #CONFIGURAÇÕES DO JOGO----------------------------------------------------
-    from src.config import FPS, LARGURA_TELA, ALTURA_TELA, TITULO_JOGO, CAMINHO_RECORDE
+    from src.config import FPS, LARGURA_TELA, ALTURA_TELA, TITULO_JOGO, CAMINHO_RECORDE, CAMINHO_RANKING
     pygame.init()
     screen = pygame.display.set_mode((LARGURA_TELA, ALTURA_TELA))
     from src.sprites import pegar_sprite
@@ -18,6 +18,7 @@ def executar_jogo():
     vida_atual = 3
     pontos_atual = 0
     recorde = carregar_recorde(CAMINHO_RECORDE)
+    ranking = carregar_recorde(CAMINHO_RANKING)
     #-----------------------------------------
 
 
