@@ -55,10 +55,12 @@ def executar_jogo():
                 vida_atual = tomar_dano(vida_atual, 1)
 
                 if jogador_perdeu(vida_atual):
+                    
+                    nome = input("Digite seu nome: ")
 
                     alterar_ranking(
                         CAMINHO_RANKING,
-                        "Jogador",
+                        nome,
                         int(pontos_atual)
                     )
 
