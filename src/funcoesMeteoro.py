@@ -52,10 +52,11 @@ meteoros = [{
     "frame_explosao": 0
 }]
 
-vel_meteoro = 350
+vel_meteoro = 350 
 
-def mover_meteoros(screen, dt, meteoro):
+def mover_meteoros(screen, dt, meteoro, pontos_atual):
     """Move os meteoros para baixo e os reposiciona quando saem da tela."""
+    velocidade = 350 + (pontos_atual // 10) * 75
     if meteoro['explodindo']:
         meteoro['frame_explosao'] += 1
         if meteoro['frame_explosao'] >= len(frames_explosao):
@@ -64,7 +65,7 @@ def mover_meteoros(screen, dt, meteoro):
             redefinir_posicao(meteoro, screen)
     
     elif not meteoro['rect'].y > screen.height: 
-        meteoro['rect'].y += vel_meteoro * dt
+        meteoro['rect'].y += velocidade * dt
     else: 
         redefinir_posicao(meteoro, screen)
         return 1

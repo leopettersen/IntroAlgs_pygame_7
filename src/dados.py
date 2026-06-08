@@ -20,20 +20,50 @@ def carregar_recorde(caminho_arquivo):
 
 def alterar_ranking(caminho_ranking, nome, pontuacao):
     """Atualiza o ranking, mantendo as 10 melhores pontuações com o nome do jogador."""
+
     ranking = []
-    
+
     try:
-        with open(caminho_ranking, "r") as arquivo:
+        with open(caminho_ranking, "r", encoding="utf-8") as arquivo:
             for linha in arquivo:
                 nome_jogador, pontos = linha.strip().split(",")
                 ranking.append((nome_jogador, int(pontos)))
+
     except FileNotFoundError:
-        return 0
-    
+        pass
+
     ranking.append((nome, pontuacao))
-    ranking.sort(key=lambda item: item[1],reverse=True)
+
+    ranking.sort(key=lambda item: item[1], reverse=True)
     ranking = ranking[:10]
 
-    with open(caminho_ranking, "w", encoding="utf-8") as arq:
+    with open(caminho_ranking, "w", encoding="utf-8") as arquivo:
         for nome_jogador, pontos in ranking:
-            arq.write(f"{nome_jogador},{pontuacao}\n")
+            arquivo.write(f"{nome_jogador},{pontos}\n")
+
+def carregar_ranking(caminho_ranking):
+    ranking = []
+
+    try:
+        with open(caminho_ranking, "r", encoding="utf-8") as arquivo:
+            for linha in arquivo:
+                nome, pontos = linha.strip().split(",")
+                ranking.append((nome, int(pontos)))
+    except FileNotFoundError:
+        pass
+
+    return ranking
+
+def carregar_maior_pontuacao(caminho_ranking):
+    try:
+        with open(caminho_ranking, "r", encoding="utf-8") as arquivo:
+            maior = 0
+
+            for linha in arquivo:
+                nome, pontos = linha.strip().split(",")
+                maior = max(maior, int(pontos))
+
+            return maior
+
+    except FileNotFoundError:
+        return 0

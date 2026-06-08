@@ -12,7 +12,7 @@ def mover_nave(dt):
     keys = pygame.key.get_pressed()
     if keys[pygame.K_a]:
         if not nave['rect'].x < 0: 
-            nave['rect'].x -= 300 * dt
+            nave['rect'].x -= 700 * dt
     if keys[pygame.K_d]:
         if not nave['rect'].x > 640 - nave['rect'].width:
-            nave['rect'].x += 300 * dt
+            nave['rect'].x += 700 * dt
