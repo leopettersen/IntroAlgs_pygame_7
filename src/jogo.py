@@ -32,7 +32,7 @@ def executar_jogo():
 
         screen.blit(fundo, (0, 0))
 
-        mover_nave(dt)
+        mover_nave(screen, dt)
         screen.blit(nave['sprite'], nave['rect'])
 
         meteoros_passados = 0
@@ -55,9 +55,7 @@ def executar_jogo():
                 vida_atual = tomar_dano(vida_atual, 1)
 
                 if jogador_perdeu(vida_atual):
-                    
                     nome = input("Digite seu nome: ")
-
                     alterar_ranking(
                         CAMINHO_RANKING,
                         nome,
@@ -65,7 +63,6 @@ def executar_jogo():
                     )
 
                     ranking = carregar_ranking(CAMINHO_RANKING)
-
                     print("Game Over!")
                     print("\n===== RANKING =====")
                     for posicao, (nome, pontos) in enumerate(ranking[:10], start=1):
@@ -85,5 +82,4 @@ def executar_jogo():
         )
 
         pygame.display.flip()
-
     pygame.quit()

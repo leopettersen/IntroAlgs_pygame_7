@@ -56,7 +56,7 @@ vel_meteoro = 350
 
 def mover_meteoros(screen, dt, meteoro, pontos_atual):
     """Move os meteoros para baixo e os reposiciona quando saem da tela."""
-    velocidade = 350 + (pontos_atual // 10) * 75
+    velocidade = 350 + (pontos_atual // 10) * 40
     if meteoro['explodindo']:
         meteoro['frame_explosao'] += 1
         if meteoro['frame_explosao'] >= len(frames_explosao):
@@ -74,7 +74,7 @@ def mover_meteoros(screen, dt, meteoro, pontos_atual):
 def redefinir_posicao(meteoro, screen):
     """Reposiciona o meteoro para o topo da tela em uma posição horizontal aleatória."""
     meteoro['rect'].y = -meteoro['rect'].height
-    meteoro['rect'].x = random.randint(0, screen.width - meteoro['rect'].width)
+    meteoro['rect'].x = random.randint(30, screen.width - meteoro['rect'].width - 30)
 
 def desenha_explosao(screen, meteoro):
     """Desenha a animacao de explosao"""
