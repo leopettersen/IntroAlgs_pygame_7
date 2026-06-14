@@ -1,10 +1,11 @@
 def executar_jogo():
+    import random
     import pygame
-
-    from src.funcoesNave import mover_nave, nave
-    from src.funcoesMeteoro import mover_meteoros, desenha_explosao, meteoros
-    from src.funcoesJogo import verificar_colisao, tomar_dano, jogador_perdeu, calcular_pontos
+    
+    import src.funcoesNave
+    import src.funcoesMeteoro
     from src.dados import carregar_recorde, salvar_recorde, alterar_ranking, carregar_recorde, salvar_recorde, alterar_ranking,carregar_ranking, carregar_maior_pontuacao
+    from src.funcoesJogo import verificar_colisao, tomar_dano, jogador_perdeu, calcular_pontos
 
     #CONFIGURAÇÕES DO JOGO----------------------------------------------------
     from src.config import FPS, LARGURA_TELA, ALTURA_TELA, TITULO_JOGO, CAMINHO_RECORDE, CAMINHO_RANKING
@@ -21,6 +22,17 @@ def executar_jogo():
     #ranking = carregar_recorde(CAMINHO_RANKING)
     #-----------------------------------------
 
+    # OBJETOS DO JOGO-----------------------------------------
+    nave = src.funcoesNave.Nave()
+    meteoros = []
+
+    for _ in range(5):
+        x = random.randint(30, LARGURA_TELA - 30)
+        y = random.randint(-1000, -33)
+
+        meteoros.append(src.funcoesMeteoro.Meteoro(x, y))
+    #-------------------------------------------
+
 
     #LOOP DO JOGO--------------------------------
     while running:
@@ -32,26 +44,18 @@ def executar_jogo():
 
         screen.blit(fundo, (0, 0))
 
-        mover_nave(screen, dt)
-        screen.blit(nave['sprite'], nave['rect'])
-
-        meteoros_passados = 0
+        nave.mover(screen, dt)
+        nave.desenhar(screen)
 
         for meteoro in meteoros:
 
-            meteoros_passados += mover_meteoros(
-                screen,
-                dt,
-                meteoro,
-                pontos_atual
-            )
+            meteoro.mover(screen, dt, pontos_atual)
+            meteoro.desenhar(screen)
 
-            if meteoro['explodindo']:
-                desenha_explosao(screen, meteoro)
-            else:
-                screen.blit(meteoro['sprite'], meteoro['rect'])
-
-            if verificar_colisao(nave['rect'], meteoro, screen):
+            if meteoro.get_passou():
+                pontos_atual = calcular_pontos(pontos_atual, 1)
+                
+            if verificar_colisao(nave, meteoro):
                 vida_atual = tomar_dano(vida_atual, 1)
 
                 if jogador_perdeu(vida_atual):
@@ -63,17 +67,15 @@ def executar_jogo():
                     )
 
                     ranking = carregar_ranking(CAMINHO_RANKING)
+                    if pontos_atual > recorde:
+                        recorde = pontos_atual
+                        salvar_recorde(CAMINHO_RECORDE, recorde)
                     print("Game Over!")
                     print("\n===== RANKING =====")
                     for posicao, (nome, pontos) in enumerate(ranking[:10], start=1):
                         print(f"{posicao}º {nome}: {pontos} pontos")
                     print(f"\nSua pontuação: {int(pontos_atual)} pontos")
                     running = False
-
-        pontos_atual = calcular_pontos(
-            pontos_atual,
-            meteoros_passados
-        )
 
         pygame.display.set_caption(
             f"{TITULO_JOGO} | Vidas: {vida_atual} | "

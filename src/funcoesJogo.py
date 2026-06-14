@@ -22,11 +22,11 @@ def limitar_valor(valor, minimo, maximo):
     return valor
 
 
-def verificar_colisao(nave, meteoro, screen):
+def verificar_colisao(nave, meteoro):
     """Verifica se a nave colidiu com um meteoro e reposiciona o meteoro se houver colisão."""
-    if meteoro['explodindo']:
+    if meteoro.get_explodindo():
         return False
-    if nave.colliderect(meteoro['rect']):
-        meteoro['explodindo'] = True
+    if nave.rect.colliderect(meteoro.rect):
+        meteoro.explodir()
         return True
     return False
