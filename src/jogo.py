@@ -1,15 +1,17 @@
 def executar_jogo():
-    import pygame
     import random
+    import pygame
 
-    from src.funcoesNave import mover_nave, nave
-    from src.funcoesMeteoro import mover_meteoros, desenha_explosao, meteoros
+    from src.funcoesNave import Nave
+    from src.funcoesMeteoro import Meteoro
+
     from src.funcoesJogo import (
         verificar_colisao,
         tomar_dano,
         jogador_perdeu,
         calcular_pontos
     )
+
     from src.dados import (
         alterar_ranking,
         carregar_ranking,
@@ -30,7 +32,9 @@ def executar_jogo():
         (LARGURA_TELA, ALTURA_TELA)
     )
 
-    pygame.display.set_caption(TITULO_JOGO)
+    pygame.display.set_caption(
+        TITULO_JOGO
+    )
 
     # ==================================================
     # ESTRELAS DO FUNDO
@@ -45,9 +49,33 @@ def executar_jogo():
             random.randint(1, 3)
         ])
 
+    # ==================================================
+    # OBJETOS DO JOGO
+    # ==================================================
+
+    nave = Nave()
+
+    meteoros = []
+
+    for _ in range(5):
+        x = random.randint(
+            30,
+            LARGURA_TELA - 30
+        )
+
+        y = random.randint(
+            -1000,
+            -33
+        )
+
+        meteoros.append(
+            Meteoro(x, y)
+        )
+
     clock = pygame.time.Clock()
 
     running = True
+
     vida_atual = 3
     pontos_atual = 0
 
@@ -64,25 +92,27 @@ def executar_jogo():
         dt = clock.tick(FPS) / 1000
 
         for event in pygame.event.get():
+
             if event.type == pygame.QUIT:
                 running = False
 
-        # Fundo preto
-        screen.fill((0, 0, 0))
+        # ==================================================
+        # FUNDO
+        # ==================================================
 
-        # ==================================================
-        # DESENHA E MOVE AS ESTRELAS
-        # ==================================================
+        screen.fill((0, 0, 0))
 
         for estrela in estrelas:
 
             estrela[1] += estrela[2] * 100 * dt
 
             if estrela[1] > ALTURA_TELA:
+
                 estrela[0] = random.randint(
                     0,
                     LARGURA_TELA
                 )
+
                 estrela[1] = 0
 
             pygame.draw.circle(
@@ -99,43 +129,36 @@ def executar_jogo():
         # NAVE
         # ==================================================
 
-        mover_nave(dt)
-
-        screen.blit(
-            nave["sprite"],
-            nave["rect"]
+        nave.mover(
+            screen,
+            dt
         )
 
-        meteoros_passados = 0
+        nave.desenhar(
+            screen
+        )
 
         # ==================================================
         # METEOROS
         # ==================================================
 
+        meteoros_passados = 0
+
         for meteoro in meteoros:
 
-            meteoros_passados += mover_meteoros(
+            meteoros_passados += meteoro.mover(
                 screen,
                 dt,
-                meteoro,
                 pontos_atual
             )
 
-            if meteoro["explodindo"]:
-                desenha_explosao(
-                    screen,
-                    meteoro
-                )
-            else:
-                screen.blit(
-                    meteoro["sprite"],
-                    meteoro["rect"]
-                )
+            meteoro.desenhar(
+                screen
+            )
 
             if verificar_colisao(
-                nave["rect"],
-                meteoro,
-                screen
+                nave,
+                meteoro
             ):
 
                 vida_atual = tomar_dano(
@@ -161,8 +184,13 @@ def executar_jogo():
                         CAMINHO_RANKING
                     )
 
-                    print("\nGame Over!")
-                    print("\n===== RANKING =====")
+                    print(
+                        "\nGame Over!"
+                    )
+
+                    print(
+                        "\n===== RANKING ====="
+                    )
 
                     for posicao, (
                         nome_ranking,
@@ -171,6 +199,7 @@ def executar_jogo():
                         ranking[:10],
                         start=1
                     ):
+
                         print(
                             f"{posicao}º "
                             f"{nome_ranking}: "

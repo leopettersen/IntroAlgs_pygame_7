@@ -55,13 +55,26 @@ def carregar_ranking(caminho_ranking):
     return ranking
 
 def carregar_maior_pontuacao(caminho_ranking):
+    """Retorna a maior pontuação presente no ranking."""
+
     try:
         with open(caminho_ranking, "r", encoding="utf-8") as arquivo:
+
             maior = 0
 
             for linha in arquivo:
-                nome, pontos = linha.strip().split(",")
-                maior = max(maior, int(pontos))
+
+                linha = linha.strip()
+
+                if linha == "" or "," not in linha:
+                    continue
+
+                nome, pontos = linha.split(",")
+
+                maior = max(
+                    maior,
+                    int(pontos)
+                )
 
             return maior
 

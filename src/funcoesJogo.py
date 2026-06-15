@@ -1,32 +1,59 @@
+# Funções auxiliares relacionadas à lógica do jogo.
+
+
 def calcular_pontos(pontos_atual, pontos_ganhos):
-    """Soma os pontos ganhos à pontuação atual."""
+    """
+    Soma os pontos ganhos à pontuação atual.
+    """
     return pontos_atual + pontos_ganhos
 
 
 def tomar_dano(vida_atual, dano):
-    """Reduz a vida atual com base no dano recebido."""
+    """
+    Reduz a quantidade de vidas do jogador.
+    """
     return vida_atual - dano
 
 
 def jogador_perdeu(vidas):
-    """Indica se o jogador ficou sem vidas."""
+    """
+    Verifica se o jogador ficou sem vidas.
+    """
     return vidas <= 0
 
 
 def limitar_valor(valor, minimo, maximo):
-    """Mantém um valor dentro do intervalo [minimo, maximo]."""
+    """
+    Mantém um valor dentro do intervalo [minimo, maximo].
+    """
+
     if valor < minimo:
         return minimo
+
     if valor > maximo:
         return maximo
+
     return valor
 
 
-def verificar_colisao(nave, meteoro, screen):
-    """Verifica se a nave colidiu com um meteoro e reposiciona o meteoro se houver colisão."""
-    if meteoro['explodindo']:
+def verificar_colisao(nave, meteoro):
+    """
+    Verifica colisão entre a nave e um meteoro.
+
+    Caso haja colisão, inicia a animação de explosão
+    do meteoro e retorna True.
+    """
+
+    # Ignora meteoros que já estão explodindo
+    if meteoro.get_explodindo():
         return False
-    if nave.colliderect(meteoro['rect']):
-        meteoro['explodindo'] = True
+
+    # Verifica a colisão entre os retângulos
+    if nave.rect.colliderect(meteoro.rect):
+
+        # Inicia a explosão do meteoro
+        meteoro.explodir()
+
         return True
+
     return False
