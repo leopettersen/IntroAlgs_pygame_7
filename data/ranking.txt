@@ -1,3 +1,5 @@
 Daniel,120
 Daniel,116
+bla,108
+bla,82
 Taro,81

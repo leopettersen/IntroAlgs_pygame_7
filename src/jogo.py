@@ -54,23 +54,14 @@ def executar_jogo():
     # ==================================================
 
     nave = Nave()
-
     meteoros = []
 
     for _ in range(5):
-        x = random.randint(
-            30,
-            LARGURA_TELA - 30
-        )
+        x = random.randint(30, LARGURA_TELA - 30)
 
-        y = random.randint(
-            -1000,
-            -33
-        )
+        y = random.randint(-1000, -33)
 
-        meteoros.append(
-            Meteoro(x, y)
-        )
+        meteoros.append(Meteoro(x, y))
 
     clock = pygame.time.Clock()
 
@@ -88,11 +79,9 @@ def executar_jogo():
     # ==================================================
 
     while running:
-
         dt = clock.tick(FPS) / 1000
 
         for event in pygame.event.get():
-
             if event.type == pygame.QUIT:
                 running = False
 
@@ -103,7 +92,6 @@ def executar_jogo():
         screen.fill((0, 0, 0))
 
         for estrela in estrelas:
-
             estrela[1] += estrela[2] * 100 * dt
 
             if estrela[1] > ALTURA_TELA:
@@ -129,14 +117,9 @@ def executar_jogo():
         # NAVE
         # ==================================================
 
-        nave.mover(
-            screen,
-            dt
-        )
+        nave.mover(screen, dt)
 
-        nave.desenhar(
-            screen
-        )
+        nave.desenhar(screen)
 
         # ==================================================
         # METEOROS
@@ -145,82 +128,34 @@ def executar_jogo():
         meteoros_passados = 0
 
         for meteoro in meteoros:
+            meteoros_passados += meteoro.mover(screen, dt, pontos_atual)
+            meteoro.desenhar(screen)
 
-            meteoros_passados += meteoro.mover(
-                screen,
-                dt,
-                pontos_atual
-            )
+            if verificar_colisao(nave, meteoro):
+                vida_atual = tomar_dano(vida_atual, 1)
 
-            meteoro.desenhar(
-                screen
-            )
+                if jogador_perdeu(vida_atual):
+                    nome = input("Digite seu nome: ")
+                    alterar_ranking(CAMINHO_RANKING, nome, int(pontos_atual))
 
-            if verificar_colisao(
-                nave,
-                meteoro
-            ):
+                    ranking = carregar_ranking(CAMINHO_RANKING)
+                    print("\nGame Over!")
+                    print("\n===== RANKING =====")
 
-                vida_atual = tomar_dano(
-                    vida_atual,
-                    1
-                )
-
-                if jogador_perdeu(
-                    vida_atual
-                ):
-
-                    nome = input(
-                        "Digite seu nome: "
-                    )
-
-                    alterar_ranking(
-                        CAMINHO_RANKING,
-                        nome,
-                        int(pontos_atual)
-                    )
-
-                    ranking = carregar_ranking(
-                        CAMINHO_RANKING
-                    )
-
-                    print(
-                        "\nGame Over!"
-                    )
-
-                    print(
-                        "\n===== RANKING ====="
-                    )
-
-                    for posicao, (
-                        nome_ranking,
-                        pontos
-                    ) in enumerate(
+                    for posicao, (nome_ranking, pontos) in enumerate(
                         ranking[:10],
                         start=1
                     ):
-
-                        print(
-                            f"{posicao}º "
-                            f"{nome_ranking}: "
-                            f"{pontos} pontos"
-                        )
-
-                    print(
-                        f"\nSua pontuação: "
-                        f"{int(pontos_atual)} pontos"
-                    )
-
+                        print(f"{posicao}º " f"{nome_ranking}: " f"{pontos} pontos")
+                    
+                    print(f"\nSua pontuação: " f"{int(pontos_atual)} pontos")
                     running = False
 
         # ==================================================
         # PONTUAÇÃO
         # ==================================================
 
-        pontos_atual = calcular_pontos(
-            pontos_atual,
-            meteoros_passados
-        )
+        pontos_atual = calcular_pontos(pontos_atual, meteoros_passados)
 
         pygame.display.set_caption(
             f"{TITULO_JOGO} | "
