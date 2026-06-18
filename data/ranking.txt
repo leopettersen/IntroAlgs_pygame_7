@@ -1,5 +1,10 @@
+torres,131
 Daniel,120
+rafael,117
 Daniel,116
 bla,108
+teste,101
 bla,82
 Taro,81
+rafael,74
+gdf,67

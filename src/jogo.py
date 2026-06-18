@@ -130,8 +130,15 @@ def executar_jogo():
         for meteoro in meteoros:
             meteoros_passados += meteoro.mover(screen, dt, pontos_atual)
             meteoro.desenhar(screen)
+            
+            for missil in nave.get_misseis():
+                if verificar_colisao(missil, meteoro):
+                    meteoro.vida = tomar_dano(meteoro.vida, 20)
+                    if meteoro.vida < 0:
+                        meteoro.explodir()
 
-            if verificar_colisao(nave, meteoro):
+            if verificar_colisao(nave.rect, meteoro):
+                meteoro.explodir()
                 vida_atual = tomar_dano(vida_atual, 1)
 
                 if jogador_perdeu(vida_atual):

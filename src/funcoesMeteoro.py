@@ -32,6 +32,7 @@ class Meteoro:
         self.explodindo = False
         self.frame_explosao = 0
         self.passou = False
+        self.vida = 100
 
     def mover(self, screen, dt, pontos_atual):
         velocidade = 350 + (pontos_atual // 10) * 40

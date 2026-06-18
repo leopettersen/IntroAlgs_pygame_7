@@ -36,9 +36,10 @@ def limitar_valor(valor, minimo, maximo):
     return valor
 
 
-def verificar_colisao(nave, meteoro):
+def verificar_colisao(rect1, meteoro):
     """
-    Verifica colisão entre a nave e um meteoro.
+    O rect1 pode ser tanto um missil quanto a nave
+    Verifica colisão entre a nave e um meteoro ou entre um missil e um meteoro.
 
     Caso haja colisão, inicia a animação de explosão
     do meteoro e retorna True.
@@ -49,11 +50,7 @@ def verificar_colisao(nave, meteoro):
         return False
 
     # Verifica a colisão entre os retângulos
-    if nave.rect.colliderect(meteoro.rect):
-
-        # Inicia a explosão do meteoro
-        meteoro.explodir()
-
+    if rect1.colliderect(meteoro.rect):
         return True
 
     return False
