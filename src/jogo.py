@@ -67,7 +67,7 @@ def executar_jogo():
 
     running = True
 
-    vida_atual = 3
+    vida_atual = 300000000
     pontos_atual = 0
 
     recorde = carregar_maior_pontuacao(
@@ -133,7 +133,8 @@ def executar_jogo():
             
             for missil in nave.get_misseis():
                 if verificar_colisao(missil, meteoro):
-                    meteoro.vida = tomar_dano(meteoro.vida, 20)
+                    meteoro.vida = tomar_dano(meteoro.vida, 25)
+                    missil.y = -5
                     if meteoro.vida < 0:
                         meteoro.explodir()
 

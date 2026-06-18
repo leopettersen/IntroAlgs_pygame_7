@@ -24,7 +24,7 @@ class Nave:
     def mover(self, screen, dt):
         keys = pygame.key.get_pressed()
 
-        if(self.missil_cooldown == 15): self.missil_cooldown = 0
+        if(self.missil_cooldown == 13): self.missil_cooldown = 0
         else: self.missil_cooldown += 1
         
         if keys[pygame.K_a]:
@@ -36,7 +36,7 @@ class Nave:
                 self.rect.x += self.velocidade * dt
                 
         if keys[pygame.K_SPACE]:
-            if self.missil_cooldown >= 15:
+            if self.missil_cooldown >= 13:
                 self.atirar()
             
         self.mover_missil(dt)
@@ -55,7 +55,7 @@ class Nave:
             pygame.draw.rect(screen, (255, 0, 255), missil)
 
     def atirar(self):
-        self.misseis[self.index_missil].x = self.rect.x
+        self.misseis[self.index_missil].x = (self.rect.x + self.rect.x  + self.rect.width)/2
         self.misseis[self.index_missil].y = self.rect.y
         if self.index_missil < self.quantidade_missil - 1:
             self.index_missil += 1

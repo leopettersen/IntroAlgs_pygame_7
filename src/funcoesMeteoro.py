@@ -56,7 +56,7 @@ class Meteoro:
 
     def redefinir_posicao(self, screen):
         self.rect.y = -self.rect.height
-
+        self.vida = random.randint(75, 200)
         self.rect.x = random.randint(
             30,
             screen.get_width() - self.rect.width - 30
