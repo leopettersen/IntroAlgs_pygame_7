@@ -1,6 +1,6 @@
 # Proposta Inicial do Jogo
 
-Este projeto consiste em um jogo inspirado em Space Invaders (Nave desviando de meteoros), desenvolvido utilizando a biblioteca Pygame e programação procedural (sem orientação a objetos). O jogador controla uma nave espacial na parte inferior da tela e deve eliminar ondas de inimigos que descem em direção à sua posição.
+Este projeto consiste em um jogo inspirado em Space Invaders (Nave desviando de meteoros), desenvolvido utilizando a biblioteca Pygame e programação orientada a objetos. O jogador controla uma nave espacial na parte inferior da tela e deve eliminar ondas de inimigos que descem em direção à sua posição.
 
 ## 1. Nome provisório do jogo
 
@@ -21,7 +21,7 @@ Liste os integrantes do grupo.
 
 ## 4. Descrição geral do jogo
 
-> Na tela aparecem a nave do jogador, meteoros caindo do espaço e a pontuação ou tempo de sobrevivência. O jogador controla uma nave espacial localizada na parte inferior da tela, podendo movê-la para a esquerda e para a direita. O objetivo é sobreviver o maior tempo possível desviando dos meteoros que surgem continuamente na tela. Conforme o tempo passa, novos meteoros aparecem, aumentando a dificuldade da partida. O principal desafio é evitar colisões com os meteoros, utilizando reflexos rápidos e movimentação precisa. O jogo termina quando um meteoro atinge a nave do jogador.
+> Na tela aparecem a nave do jogador, meteoros caindo do espaço e a pontuação ou tempo de sobrevivência. O jogador controla uma nave espacial localizada na parte inferior da tela, podendo movê-la para a esquerda e para a direita. O objetivo é sobreviver o maior tempo possível desviando/destruindo dos meteoros que surgem continuamente na tela. Conforme o tempo passa, novos meteoros aparecem, aumentando a dificuldade da partida. O principal desafio é evitar colisões com os meteoros, utilizando reflexos rápidos e movimentação precisa. O jogo termina quando um meteoro atinge a nave do jogador.
 
 ## 5. Objetivo do jogador
 
@@ -54,7 +54,7 @@ Nave: Representa o jogador. Deve mover-se no eixo x para desviar dos meteoros.
 
 Descrição:
 
-> Deve mover-se no eixo x para desviar dos meteoros
+> Deve mover-se no eixo x para desviar dos meteoros e atirar misseis
 
 ## Obstáculos, inimigos ou desafios
 
@@ -62,7 +62,7 @@ Descrição:
 
 ## Itens, alvos ou objetos de interação
 
-> As interações acontecem quando um meteoro colide com a nave do jogador ou quando o meteoro chega ao fim da tela, o renderizando novamente em uma posição aleatória.
+> As interações acontecem quando um meteoro colide com a nave do jogador, quando o meteoro colide com um míssil ou quando o meteoro chega ao fim da tela, o renderizando novamente em uma posição aleatória.
 
 ## Pontuação, vidas, tempo ou progresso
 
@@ -72,16 +72,19 @@ Descrição:
 
 Seta para esquerda: mover a nave para a esquerda
 Seta para direita: mover a nave para a direita
+Espaço: atirar misseis
 
 ## 11. Organização inicial do código
 
 Organização planejada:
 
-> - `main.py`: inicia o jogo;
-> - `src/jogo.py`: contém o loop principal;
-> - `src/config.py`: guarda configurações como tamanho da tela e cores;
-> - `src/funcoes.py`: contém funções auxiliares;
-> - `src/dados.py`: contém funções de leitura e escrita de arquivos.
+- `jogo.py`: loop principal, eventos, atualização e renderização.
+- `config.py`: constantes globais (tela, cores, caminhos, FPS).
+- `funcoes.py`: funções auxiliares de regra e lógica.
+- `funcoesNave.py`: funções referentes à nave.
+- `funcoesMeteoro.py`: funções referentes aos meteoros.
+- `sprites.py`: carregamento e recorte de spritesheet.
+- `dados.py`: leitura e gravação de dados (recorde/ranking).
 
 ## 12. Recursos externos previstos
 
@@ -112,4 +115,3 @@ Melhorias possíveis:
 - Melhoria 1: Diferentes naves;
 - Melhoria 2: Aumento de dificuldade;
 - Melhoria 3: Animações;
-- Melhoria 4: Disparos pela nave.

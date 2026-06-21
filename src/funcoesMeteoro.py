@@ -51,7 +51,7 @@ class Meteoro:
         else:
             self.redefinir_posicao(screen)
             self.passou = True
-            return 1
+            return 1 #eh pq ele chegou ao final. adiciona um ponto
         return 0
 
     def redefinir_posicao(self, screen):

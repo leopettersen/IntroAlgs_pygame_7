@@ -5,6 +5,3 @@ dAEl,120
 Leo,118
 rafael,117
 Daniel,116
-d,114
-Leonardo,110
-d,109

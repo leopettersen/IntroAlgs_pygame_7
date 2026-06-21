@@ -37,6 +37,7 @@ Cada colisão entre a nave e um meteoro faz o jogador perder uma vida. Depois de
 
 Seta para esquerda: mover a nave para a esquerda
 Seta para direita: mover a nave para a direita
+Espaço: Atirar misseis
 
 ## Como executar o projeto
 
@@ -54,16 +55,3 @@ python main.py
 ```bash
 python -m pytest
 ```
-
-## Checklist mínimo para entrega
-
-- Preencher este README com nome final, descrição real, regras e controles do jogo.
-- Atualizar `docs/proposta.MD` com a proposta do grupo.
-- Garantir que o jogo executa com `python main.py`.
-- Garantir que os testes passam com `pytest`.
-
-## Observações para os alunos
-
-- Mantenham o código organizado em módulos pequenos e com responsabilidade clara.
-- Comentem partes importantes da lógica, principalmente regras do jogo.
-- Registrem decisões técnicas no README do grupo ao longo do desenvolvimento.
