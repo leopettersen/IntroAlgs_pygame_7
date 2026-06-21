@@ -1,6 +1,7 @@
 def executar_jogo():
     import random
     import pygame
+    import os
 
     from src.funcoesNave import Nave
     from src.funcoesMeteoro import Meteoro
@@ -29,6 +30,17 @@ def executar_jogo():
     from src.telas import tela_menu, tela_game_over
 
     pygame.init()
+    pygame.mixer.init()
+
+    caminho_musica = os.path.join(
+        "assets",
+        "sons",
+        "Ariel - Space (from Super Chicken Jumper OST).mp3"
+    )
+
+    pygame.mixer.music.load(caminho_musica)
+    pygame.mixer.music.set_volume(0.05)
+    pygame.mixer.music.play(-1)
 
     screen = pygame.display.set_mode(
         (LARGURA_TELA, ALTURA_TELA)
@@ -47,12 +59,14 @@ def executar_jogo():
     quer_jogar = tela_menu(screen, clock, FPS)
 
     if not quer_jogar:
+        pygame.mixer.music.stop()
         pygame.quit()
         return
 
     jogar_novamente = True
 
     while jogar_novamente:
+
         # ==================================================
         # ESTRELAS DO FUNDO
         # ==================================================
@@ -75,7 +89,6 @@ def executar_jogo():
 
         for _ in range(5):
             x = random.randint(30, LARGURA_TELA - 30)
-
             y = random.randint(-1000, -33)
 
             meteoros.append(Meteoro(x, y))
@@ -136,7 +149,6 @@ def executar_jogo():
             # ==================================================
 
             nave.mover(screen, dt)
-
             nave.desenhar(screen)
 
             # ==================================================
@@ -146,19 +158,33 @@ def executar_jogo():
             meteoros_passados = 0
 
             for meteoro in meteoros:
-                meteoros_passados += meteoro.mover(screen, dt, pontos_atual)
+                meteoros_passados += meteoro.mover(
+                    screen,
+                    dt,
+                    pontos_atual
+                )
+
                 meteoro.desenhar(screen)
 
                 for missil in nave.get_misseis():
                     if verificar_colisao(missil, meteoro):
-                        meteoro.vida = tomar_dano(meteoro.vida, 25)
+                        meteoro.vida = tomar_dano(
+                            meteoro.vida,
+                            25
+                        )
+
                         missil.y = -5
+
                         if meteoro.vida < 0:
                             meteoro.explodir()
 
                 if verificar_colisao(nave.rect, meteoro):
                     meteoro.explodir()
-                    vida_atual = tomar_dano(vida_atual, 1)
+
+                    vida_atual = tomar_dano(
+                        vida_atual,
+                        1
+                    )
 
                     if jogador_perdeu(vida_atual):
                         running = False
@@ -168,7 +194,10 @@ def executar_jogo():
             # PONTUAÇÃO
             # ==================================================
 
-            pontos_atual = calcular_pontos(pontos_atual, meteoros_passados)
+            pontos_atual = calcular_pontos(
+                pontos_atual,
+                meteoros_passados
+            )
 
             pygame.display.set_caption(
                 f"{TITULO_JOGO} | "
@@ -184,14 +213,27 @@ def executar_jogo():
         # ==================================================
 
         if jogador_morreu:
-            ranking_atual = carregar_ranking(CAMINHO_RANKING)
-
-            nome, acao = tela_game_over(
-                screen, clock, FPS, pontos_atual, ranking_atual
+            ranking_atual = carregar_ranking(
+                CAMINHO_RANKING
             )
 
-            alterar_ranking(CAMINHO_RANKING, nome, int(pontos_atual))
+            nome, acao = tela_game_over(
+                screen,
+                clock,
+                FPS,
+                pontos_atual,
+                ranking_atual
+            )
 
-            jogar_novamente = (acao == "jogar")
+            alterar_ranking(
+                CAMINHO_RANKING,
+                nome,
+                int(pontos_atual)
+            )
 
+            jogar_novamente = (
+                acao == "jogar"
+            )
+
+    pygame.mixer.music.stop()
     pygame.quit()
