@@ -8,9 +8,3 @@ Pasta destinada a sprites, fundos, icones e outros elementos visuais.
 - `meteoro.png`: spritesheet base dos meteoros. Fonte: Void - environment pack. (n.d.). Itch.Io. Retrieved June 4, 2026, from https://foozlecc.itch.io/void-environment-pack
 - `explosao.gif`: gif da colisão nave-meteoro. Fonte: Void - environment pack. (n.d.). Itch.Io. Retrieved June 4, 2026, from https://foozlecc.itch.io/void-environment-pack
 - `fundo.png`: fundo do jogo. Fonte: Spaceship 2d game assets. (n.d.). Itch.Io. Retrieved June 4, 2026, from https://axassets.itch.io/spaceship-simple-assets
-
-## Recomendações
-
-- Separe imagens por tema quando o projeto crescer.
-- Mantenha dimensoes e padroes consistentes para facilitar colisao e animacao.
-- Prefira formatos com transparencia quando necessario (ex.: `.png`).
