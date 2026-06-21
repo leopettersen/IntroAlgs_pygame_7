@@ -1,3 +1,4 @@
+Jogador,133
 torres,131
 Daniel,120
 dAEl,120
@@ -6,5 +7,4 @@ rafael,117
 Daniel,116
 d,114
 Leonardo,110
-bla,108
-teste,101
+d,109

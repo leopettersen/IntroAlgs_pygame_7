@@ -6,6 +6,7 @@ Esta pasta centraliza os recursos visuais e sonoros do jogo.
 
 - `imagens/`: sprites, fundos e ícones.
 - `sons/`: efeitos sonoros e músicas.
+  - `Ariel - Space (from Super Chicken Jumper OST).mp3`: música de fundo do jogo.
 - `fontes/`: fontes tipográficas customizadas.
 
 ## Boas práticas
